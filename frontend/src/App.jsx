@@ -1,6 +1,7 @@
 import "./assets/styles/App.css";
 import Sidebar from "./components/layout/SideBar";
 import Header from "./components/layout/Header";
+import HomePage from "./pages/HomePage";
 import { useState } from "react";
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,7 +14,7 @@ const App = () => {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      {/* Overlay for mobile */}
+      {/* Overlay for mobile to close sidebar */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
@@ -26,18 +27,9 @@ const App = () => {
         {/* Header Component */}
         <Header setIsSidebarOpen={setIsSidebarOpen} />
 
-        {/* Main content placeholder */}
+        {/* Main content now renders the HomePage */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8">
-          <h1 className="text-2xl font-bold text-slate-800">Welcome Back!</h1>
-          <p className="text-slate-500 mt-2">
-            Here's a look at your recent activity and study sets.
-          </p>
-          {/* Your main content like flashcard sets, folders, etc. will go here */}
-          <div className="mt-8 p-8 border-2 border-dashed border-slate-300 rounded-xl bg-white">
-            <p className="text-center text-slate-500">
-              Main content area for flashcards
-            </p>
-          </div>
+          <HomePage />
         </main>
       </div>
     </div>
