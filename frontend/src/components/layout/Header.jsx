@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Header = ({ setIsSidebarOpen }) => {
   return (
-    <header className="bg-white border-b border-slate-200 p-4 z-10">
-      <div className="flex items-center justify-between">
+    <header className="bg-white border-b border-slate-200 h-16 flex items-center z-10">
+      <div className="flex items-center justify-between w-full px-4">
         {/* Left side: Search bar */}
         <div className="flex items-center gap-4">
           <button

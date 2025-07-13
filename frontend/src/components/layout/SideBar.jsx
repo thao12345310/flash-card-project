@@ -13,7 +13,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         z-30
       `}
     >
-      <div className="flex items-center justify-between p-4 border-b border-slate-200">
+      <div className="flex items-center justify-between px-4 border-b border-slate-200 h-16 flex-shrink-0">
         <div className="flex items-center gap-2">
           <div className="bg-blue-600 text-white font-bold text-xl rounded-md p-2">
             Q
