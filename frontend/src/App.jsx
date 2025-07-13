@@ -1,8 +1,9 @@
 import "./assets/styles/App.css";
 import Sidebar from "./components/layout/SideBar";
 import Header from "./components/layout/Header";
-import HomePage from "./pages/HomePage";
+import AppRoutes from "./routes/AppRoutes"; // Thay vì HomePage
 import { useState } from "react";
+
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -27,9 +28,9 @@ const App = () => {
         {/* Header Component */}
         <Header setIsSidebarOpen={setIsSidebarOpen} />
 
-        {/* Main content now renders the HomePage */}
+        {/* Main content: render routes */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8">
-          <HomePage />
+          <AppRoutes />
         </main>
       </div>
     </div>

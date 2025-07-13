@@ -1,4 +1,5 @@
 import { Menu, Search, Plus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = ({ setIsSidebarOpen }) => {
   return (
@@ -27,10 +28,12 @@ const Header = ({ setIsSidebarOpen }) => {
 
         {/* Right side: Actions & User Profile */}
         <div className="flex items-center gap-2 md:gap-4">
-          <button className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
-            <Plus size={20} />
-            <span className="hidden md:inline">Create</span>
-          </button>
+          <Link to="/create-set">
+            <button className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
+              <Plus size={20} />
+              <span className="hidden md:inline">Create</span>
+            </button>
+          </Link>
           <button className="hidden sm:block bg-yellow-400 text-yellow-900 font-semibold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors">
             Upgrade: free 7-day trial
           </button>

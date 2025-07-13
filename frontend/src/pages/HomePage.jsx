@@ -1,4 +1,5 @@
 import StudyItem from "../components/common/StudyItem";
+import { Link } from "react-router-dom";
 // Dữ liệu mẫu - có thể được lấy từ API trong tương lai
 const studySetsData = [
   {
