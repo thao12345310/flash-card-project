@@ -1,11 +1,15 @@
 import { Menu, Search, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Header = ({ setIsSidebarOpen }) => {
+// ====================================================================================
+// Header Component
+// Component này giờ sẽ hiển thị giao diện khác nhau dựa trên trạng thái đăng nhập
+// ====================================================================================
+const Header = ({ isLoggedIn, onLogin, onLogout, setIsSidebarOpen }) => {
   return (
     <header className="bg-white border-b border-slate-200 h-16 flex items-center z-10">
       <div className="flex items-center justify-between w-full px-4">
-        {/* Left side: Search bar */}
+        {/* Left side: Search bar & Menu Icon */}
         <div className="flex items-center gap-4">
           <button
             onClick={() => setIsSidebarOpen(true)}
@@ -28,18 +32,43 @@ const Header = ({ setIsSidebarOpen }) => {
 
         {/* Right side: Actions & User Profile */}
         <div className="flex items-center gap-2 md:gap-4">
-          <Link to="/create-set">
-            <button className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
-              <Plus size={20} />
-              <span className="hidden md:inline">Create</span>
-            </button>
-          </Link>
-          <button className="hidden sm:block bg-yellow-400 text-yellow-900 font-semibold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors">
-            Upgrade: free 7-day trial
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center bg-teal-500 text-white font-bold rounded-full">
-            T
-          </button>
+          {isLoggedIn ? (
+            // Giao diện KHI ĐÃ ĐĂNG NHẬP
+            <>
+              <Link to="/create-set">
+                <button className="flex items-center gap-2 bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
+                  <Plus size={20} />
+                  <span className="hidden md:inline">Create</span>
+                </button>
+              </Link>
+              <button className="hidden sm:block bg-yellow-400 text-yellow-900 font-semibold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors">
+                Upgrade
+              </button>
+              <button
+                onClick={onLogout}
+                className="w-10 h-10 flex items-center justify-center bg-teal-500 text-white font-bold rounded-full"
+                title="Click to Logout"
+              >
+                T
+              </button>
+            </>
+          ) : (
+            // Giao diện KHI CHƯA ĐĂNG NHẬP
+            <>
+              <button
+                onClick={onLogin}
+                className="font-semibold text-slate-600 hover:text-blue-600 transition-colors px-4 py-2"
+              >
+                Log in
+              </button>
+              <button
+                onClick={onLogin} // Trong ví dụ này, nút Sign up cũng sẽ thực hiện đăng nhập
+                className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors"
+              >
+                Sign up
+              </button>
+            </>
+          )}
         </div>
       </div>
     </header>
