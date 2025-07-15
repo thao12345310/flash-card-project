@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+
+// Hàm tiện ích: xáo trộn một mảng
+const shuffleArray = (array) => {
+  return [...array].sort(() => Math.random() - 0.5);
+};
+
 // ====================================================================================
 // CHẾ ĐỘ 3: KIỂM TRA (Test Mode)
 // ====================================================================================
