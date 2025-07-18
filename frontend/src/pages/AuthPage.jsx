@@ -95,3 +95,5 @@ const AuthPage = ({ onLoginSuccess, isSignup = false }) => {
     </div>
   );
 };
+
+export default AuthPage;

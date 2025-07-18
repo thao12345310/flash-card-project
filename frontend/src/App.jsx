@@ -1,40 +1,30 @@
 import "./assets/styles/App.css";
-import Sidebar from "./components/layout/SideBar";
-import Header from "./components/layout/Header";
+import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes"; // Thay vì HomePage
 import { useState } from "react";
 
-const App = () => {
+export default function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const handleLoginSuccess = (user) => {
+    setCurrentUser(user);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+  };
+
   return (
-    <div className="h-screen w-full bg-slate-50 font-sans flex text-slate-800">
-      {/* Sidebar Component */}
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
-
-      {/* Overlay for mobile to close sidebar */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
-          onClick={() => setIsSidebarOpen(false)}
+    <BrowserRouter>
+      <div className="min-h-screen bg-slate-50">
+        <AppRoutes
+          currentUser={currentUser}
+          onLoginSuccess={handleLoginSuccess}
+          onLogout={handleLogout}
+          setIsSidebarOpen={setIsSidebarOpen}
         />
-      )}
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header Component */}
-        <Header setIsSidebarOpen={setIsSidebarOpen} />
-
-        {/* Main content: render routes */}
-        <main className="flex-1 overflow-y-auto p-6 md:p-8">
-          <AppRoutes />
-        </main>
       </div>
-    </div>
+    </BrowserRouter>
   );
-};
-
-export default App;
+}

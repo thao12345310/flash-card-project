@@ -1,38 +1,5 @@
 import React, { useState, useMemo } from "react";
 
-// ====================================================================================
-// Mock Data: Dữ liệu mẫu cho bộ flashcard
-// ====================================================================================
-const mockFlashcardSet = {
-  id: "set1",
-  title: "React Hooks Basics",
-  cards: [
-    {
-      id: "card1",
-      term: "useState",
-      definition:
-        "A Hook that lets you add React state to function components.",
-    },
-    {
-      id: "card2",
-      term: "useEffect",
-      definition:
-        "A Hook that lets you perform side effects in function components.",
-    },
-    {
-      id: "card3",
-      term: "useContext",
-      definition: "A Hook that lets you read context without a Consumer.",
-    },
-    {
-      id: "card4",
-      term: "useReducer",
-      definition:
-        "An alternative to useState, usually preferable for complex state logic.",
-    },
-  ],
-};
-
 const LearnMode = ({ cards }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
