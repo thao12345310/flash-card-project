@@ -7,24 +7,18 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const handleLoginSuccess = (user) => {
-    setCurrentUser(user);
-  };
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-  };
+  const handleLoginSuccess = (user) => setCurrentUser(user);
+  const handleLogout = () => setCurrentUser(null);
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-50">
-        <AppRoutes
-          currentUser={currentUser}
-          onLoginSuccess={handleLoginSuccess}
-          onLogout={handleLogout}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
-      </div>
+      <AppRoutes
+        currentUser={currentUser}
+        onLoginSuccess={handleLoginSuccess}
+        onLogout={handleLogout}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
     </BrowserRouter>
   );
 }

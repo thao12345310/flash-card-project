@@ -1,37 +1,36 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import HomePage from "../pages/HomePage";
 import AppLayout from "../components/layout/AppLayout";
-import Header from "../components/layout/Header";
+import HomePage from "../pages/HomePage";
+import CreateSetPage from "../pages/CreateSetPage";
+import StudyPage from "../pages/StudyPage";
 import AuthPage from "../pages/AuthPage";
 
-// ====================================================================================
-// 6. AppRoutes Component (Giả lập file AppRoutes.jsx)
-//    Component này nhận các hàm và state từ App.jsx qua props
-// ====================================================================================
 const AppRoutes = ({
   currentUser,
   onLoginSuccess,
   onLogout,
+  isSidebarOpen,
   setIsSidebarOpen,
 }) => {
   return (
     <Routes>
-      {/* Các trang có layout chung (Header) */}
+      {/* Các trang dùng layout chung */}
       <Route
-        path="/"
         element={
-          <AppLayout>
-            <Header
-              currentUser={currentUser}
-              onLogout={onLogout}
-              setIsSidebarOpen={setIsSidebarOpen}
-            />
-            <HomePage currentUser={currentUser} />
-          </AppLayout>
+          <AppLayout
+            currentUser={currentUser}
+            onLogout={onLogout}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
         }
-      ></Route>
+      >
+        <Route path="/" element={<HomePage currentUser={currentUser} />} />
+        <Route path="/create-set" element={<CreateSetPage />} />
+        <Route path="/study" element={<StudyPage />} />
+      </Route>
 
-      {/* Các trang không có layout chung */}
+      {/* Các trang không dùng layout chung */}
       <Route
         path="/login"
         element={
