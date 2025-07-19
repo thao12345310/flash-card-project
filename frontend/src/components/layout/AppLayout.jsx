@@ -7,6 +7,7 @@ const AppLayout = ({
   onLogout,
   isSidebarOpen,
   setIsSidebarOpen,
+  onNewFolderClick,
 }) => {
   return (
     <div className="flex h-screen bg-slate-50">
@@ -21,6 +22,7 @@ const AppLayout = ({
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        onNewFolderClick={onNewFolderClick}
       />
 
       <div className="flex-1 flex flex-col overflow-hidden">

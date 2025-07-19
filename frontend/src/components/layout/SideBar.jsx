@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import NavItem from "../common/NavItem"; // Giả định bạn có component này
 
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, onNewFolderClick }) => {
   return (
     <aside
       className={`
@@ -62,7 +62,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <h3 className="px-3 pb-2 text-sm font-semibold text-slate-800">
             Your folders
           </h3>
-          <NavItem icon={<Plus size={24} />} text="New folder" />
+          <NavItem
+            icon={<Plus size={24} />}
+            text="New folder"
+            isButton
+            onClick={onNewFolderClick}
+          />
         </div>
 
         <div className="pt-4">

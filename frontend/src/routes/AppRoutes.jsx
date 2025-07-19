@@ -4,7 +4,9 @@ import HomePage from "../pages/HomePage";
 import CreateSetPage from "../pages/CreateSetPage";
 import StudyPage from "../pages/StudyPage";
 import AuthPage from "../pages/AuthPage";
-
+import FolderPage from "../pages/FolderPage";
+import { useState } from "react";
+import NewFolderModal from "../components/common/NewFolderModal";
 const AppRoutes = ({
   currentUser,
   onLoginSuccess,
@@ -12,46 +14,56 @@ const AppRoutes = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
-  return (
-    <Routes>
-      {/* Các trang dùng layout chung */}
-      <Route
-        element={
-          <AppLayout
-            currentUser={currentUser}
-            onLogout={onLogout}
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
-          />
-        }
-      >
-        <Route path="/" element={<HomePage currentUser={currentUser} />} />
-        <Route path="/create-set" element={<CreateSetPage />} />
-        <Route path="/study" element={<StudyPage />} />
-      </Route>
+  const [isNewFolderModalOpen, setIsNewFolderModalOpen] = useState(false);
 
-      {/* Các trang không dùng layout chung */}
-      <Route
-        path="/login"
-        element={
-          currentUser ? (
-            <Navigate to="/" />
-          ) : (
-            <AuthPage onLoginSuccess={onLoginSuccess} />
-          )
-        }
+  return (
+    <div>
+      <Routes>
+        {/* Các trang dùng layout chung */}
+        <Route
+          element={
+            <AppLayout
+              currentUser={currentUser}
+              onLogout={onLogout}
+              isSidebarOpen={isSidebarOpen}
+              setIsSidebarOpen={setIsSidebarOpen}
+              onNewFolderClick={() => setIsNewFolderModalOpen(true)}
+            />
+          }
+        >
+          <Route path="/" element={<HomePage currentUser={currentUser} />} />
+          <Route path="/create-set" element={<CreateSetPage />} />
+          <Route path="/study" element={<StudyPage />} />
+          <Route path="/folder/:folderName" element={<FolderPage />} />
+        </Route>
+
+        {/* Các trang không dùng layout chung */}
+        <Route
+          path="/login"
+          element={
+            currentUser ? (
+              <Navigate to="/" />
+            ) : (
+              <AuthPage onLoginSuccess={onLoginSuccess} />
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            currentUser ? (
+              <Navigate to="/" />
+            ) : (
+              <AuthPage onLoginSuccess={onLoginSuccess} isSignup />
+            )
+          }
+        />
+      </Routes>
+      <NewFolderModal
+        isOpen={isNewFolderModalOpen}
+        onClose={() => setIsNewFolderModalOpen(false)}
       />
-      <Route
-        path="/signup"
-        element={
-          currentUser ? (
-            <Navigate to="/" />
-          ) : (
-            <AuthPage onLoginSuccess={onLoginSuccess} isSignup />
-          )
-        }
-      />
-    </Routes>
+    </div>
   );
 };
 
