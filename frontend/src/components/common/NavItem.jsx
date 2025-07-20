@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 // Navigation Item for the Sidebar
-const NavItem = ({ icon, text, active, isButton, onClick }) => {
+const NavItem = ({ icon, text, active, isButton, onClick, to }) => {
   const baseClasses =
     "flex items-center w-full text-left p-3 rounded-lg transition-colors duration-200";
   const activeClasses = active
@@ -11,7 +12,7 @@ const NavItem = ({ icon, text, active, isButton, onClick }) => {
   const content = (
     <>
       {icon}
-      <span className="ml-3">{text}</span>
+      <span className="ml-3 text-sm font-semibold">{text}</span>
     </>
   );
 
@@ -23,11 +24,18 @@ const NavItem = ({ icon, text, active, isButton, onClick }) => {
     );
   }
 
+  if (to) {
+    return (
+      <Link to={to} className={finalClasses}>
+        {content}
+      </Link>
+    );
+  }
+
   return (
     <a href="#" className={finalClasses}>
       {content}
     </a>
   );
 };
-
 export default NavItem;
