@@ -5,6 +5,7 @@ import CreateSetPage from "../pages/CreateSetPage";
 import StudyPage from "../pages/StudyPage";
 import AuthPage from "../pages/AuthPage";
 import FolderPage from "../pages/FolderPage";
+import UserProfilePage from "../pages/UserProfilePage";
 import { useState } from "react";
 import NewFolderModal from "../components/common/NewFolderModal";
 const AppRoutes = ({
@@ -34,6 +35,10 @@ const AppRoutes = ({
           <Route path="/" element={<HomePage currentUser={currentUser} />} />
           <Route path="/create-set" element={<CreateSetPage />} />
           <Route path="/study" element={<StudyPage />} />
+          <Route
+            path="/profile"
+            element={<UserProfilePage currentUser={currentUser} />}
+          />
           <Route path="/folder/:folderName" element={<FolderPage />} />
         </Route>
 
