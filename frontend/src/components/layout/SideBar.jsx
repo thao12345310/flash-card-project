@@ -44,7 +44,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen, onNewFolderClick }) => {
           to="/"
           active={location.pathname === "/"}
         />
-        <NavItem icon={<Library size={24} />} text="Your library" />
+        <NavItem
+          icon={<Library size={24} />}
+          text="Your library"
+          to="/library"
+          active={location.pathname === "/library"}
+        />
         <NavItem icon={<Bell size={24} />} text="Notifications" />
 
         <div className="pt-6">

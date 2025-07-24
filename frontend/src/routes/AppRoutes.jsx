@@ -8,6 +8,7 @@ import FolderPage from "../pages/FolderPage";
 import UserProfilePage from "../pages/UserProfilePage";
 import { useState } from "react";
 import NewFolderModal from "../components/common/NewFolderModal";
+import LibraryPage from "../pages/LibraryPage";
 const AppRoutes = ({
   currentUser,
   onLoginSuccess,
@@ -40,6 +41,7 @@ const AppRoutes = ({
             element={<UserProfilePage currentUser={currentUser} />}
           />
           <Route path="/folder/:folderName" element={<FolderPage />} />
+          <Route path="/library" element={<LibraryPage />} />
         </Route>
 
         {/* Các trang không dùng layout chung */}
